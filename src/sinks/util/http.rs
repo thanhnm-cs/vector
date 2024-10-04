@@ -471,6 +471,7 @@ impl RetryLogic for HttpRetryLogic {
 
         match status {
             StatusCode::TOO_MANY_REQUESTS => RetryAction::Retry("too many requests".into()),
+            StatusCode::BAD_REQUESTS => RetryAction::Retry("too many requests".into()),
             StatusCode::NOT_IMPLEMENTED => {
                 RetryAction::DontRetry("endpoint not implemented".into())
             }
@@ -521,6 +522,7 @@ where
 
         match status {
             StatusCode::TOO_MANY_REQUESTS => RetryAction::Retry("too many requests".into()),
+            StatusCode::BAD_REQUESTS => RetryAction::Retry("too many requests".into()),
             StatusCode::NOT_IMPLEMENTED => {
                 RetryAction::DontRetry("endpoint not implemented".into())
             }
@@ -792,7 +794,6 @@ mod test {
     #[test]
     fn util_http_retry_logic() {
         let logic = HttpRetryLogic;
-
         let response_429 = Response::builder().status(429).body(Bytes::new()).unwrap();
         let response_500 = Response::builder().status(500).body(Bytes::new()).unwrap();
         let response_400 = Response::builder().status(400).body(Bytes::new()).unwrap();
