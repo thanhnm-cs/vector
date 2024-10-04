@@ -471,7 +471,7 @@ impl RetryLogic for HttpRetryLogic {
 
         match status {
             StatusCode::TOO_MANY_REQUESTS => RetryAction::Retry("too many requests".into()),
-            StatusCode::BAD_REQUESTS => RetryAction::Retry("too many requests".into()),
+            StatusCode::BAD_REQUEST => RetryAction::Retry("too many requests".into()),
             StatusCode::NOT_IMPLEMENTED => {
                 RetryAction::DontRetry("endpoint not implemented".into())
             }
@@ -522,7 +522,7 @@ where
 
         match status {
             StatusCode::TOO_MANY_REQUESTS => RetryAction::Retry("too many requests".into()),
-            StatusCode::BAD_REQUESTS => RetryAction::Retry("too many requests".into()),
+            StatusCode::BAD_REQUEST => RetryAction::Retry("too many requests".into()),
             StatusCode::NOT_IMPLEMENTED => {
                 RetryAction::DontRetry("endpoint not implemented".into())
             }

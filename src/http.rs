@@ -42,7 +42,7 @@ pub mod status {
     pub const FORBIDDEN: u16 = 403;
     pub const NOT_FOUND: u16 = 404;
     pub const TOO_MANY_REQUESTS: u16 = 429;
-    pub const BAD_REQUESTS: u16 = 400;
+    pub const BAD_REQUEST: u16 = 400;
 }
 
 #[derive(Debug, Snafu)]
